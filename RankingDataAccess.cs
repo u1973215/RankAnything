@@ -17,7 +17,7 @@ public class RankingDataAccess
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            string query = "SELECT * FROM RankingItems ORDER BY VoteCount DESC";
+            string query = "SELECT * FROM RankingItems";
             return connection.Query<RankingItem>(query).AsList();
         }
     }
@@ -26,7 +26,7 @@ public class RankingDataAccess
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            string query = "INSERT INTO RankingItems (Name, ImageUrl, VoteCount) VALUES (@Name, @ImageUrl, @VoteCount)";
+            string query = "INSERT INTO RankingItems (Name, ImageUrl) VALUES (@Name, @ImageUrl)";
             connection.Execute(query, item);
         }
     }
